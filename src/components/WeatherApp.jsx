@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import '../styles/weather_app.css';
 
+const {REACT_APP_CDA_TOKEN} = process.env;
+
 const api = {
-  
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
@@ -12,7 +13,7 @@ export function WeatherApp() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&lang=pt_br&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=metric&lang=pt_br&APPID=${REACT_APP_CDA_TOKEN}`)
         .then(response => response.json())
         .then(result => {
           setWeather(result);
